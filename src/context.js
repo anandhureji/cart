@@ -13,6 +13,8 @@ const initalState = {
   amount:0,
 }
 
+
+
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer,initalState);
 
@@ -31,6 +33,13 @@ const AppProvider = ({ children }) => {
   const decrease = (id) =>{
     dispatch({type:'DECREASE',payload:id})
   }
+
+  useEffect(()=>{
+
+    dispatch({type:'GET_TOTALS'})
+    console.log('hello')
+  
+  },[state.cart])
 
   return (
     <AppContext.Provider
